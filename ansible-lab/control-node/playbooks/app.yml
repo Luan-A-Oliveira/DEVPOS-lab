@@ -56,7 +56,7 @@
     - name: Gerar pacotes da aplicação
       command: /opt/apache-maven-3.1.0/bin/mvn -f /opt/notes/pom.xml package
       become_user: app
-    - name: Regiustrar versão atual do pacote
+    - name: Registrar versão atual do pacote
       shell:
         cmd: /opt/apache-maven-3.1.0/bin/mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -v '\['
         chdir: /opt/notes/
