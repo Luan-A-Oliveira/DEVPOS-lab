@@ -1,0 +1,13 @@
+{
+    "window.closeWhenEmpty": false,
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.view.alwaysShowHeaderActions": false,
+    "workbench.editor.centeredLayoutFixedWidth": false,
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.highlightModifiedTabs": false,
+    "screencastMode.keyboardOptions": {
+        "showCommands": false,
+        "showCommandGroups": true
+    },
+    "window.autoDetectColorScheme": false
+}
