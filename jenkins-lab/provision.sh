@@ -1,10 +1,10 @@
 #/bin/bash
 
 yum install epel-release -y
-yum install wget -y
+yum install wget git -y
 sudo wget --no-check-certificate -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-yum java-11-opendk-devel -y
+yum install java-11-openjdk-devel -y
 yum install jenkins -y
 systemctl daemon-reload
 service jenkins start
@@ -21,3 +21,15 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 system ctl daemon-reload
 systemctl restart docker
+usermod -aG docker jenkins
+
+#instalacao do sonar scaner
+
+yum install wget unzip -y
+wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+unzip sonar-scanner-cli-5.0.1.3006-linux.zip -d /opt/
+mv /opt/sonar-scanner-cli-5.0.1.3006-linux /opt/sonar-scanner
+chown -R jenkins:jenkins /opt/sonar-scanner
+echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo tee -a /etc/profile
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install nodejs -y
